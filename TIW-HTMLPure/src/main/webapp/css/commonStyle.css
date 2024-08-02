@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+body {
+	background-color: Azure;
+	font-family: Georgia, serif;
+}
+
+h1 {
+	font-family: Tahoma, sans-serif;
+	text-align: center;
+}
+
+a:link {
+	color: DarkBlue;
+	text-decoration: none;
+}
+
+a:hover {
+	color: green;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: DarkBlue;
+	text-decoration: none;
+}
+
+.container {
+	margin: auto;
+	background-color: #E6E6FA;
+	width: 1000px;
+	border-radius: 10px;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 15px;
+}
+
+.boxed {
+	width: 60%;
+	margin: auto;
+	border: 1px solid;
+	border-radius: 20px;
+	text-align: center;
+	padding: 5px;
+}

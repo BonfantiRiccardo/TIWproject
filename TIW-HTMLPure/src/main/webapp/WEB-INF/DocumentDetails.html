@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Document Details Page</title>
+<link rel="stylesheet" type="text/css" media="all" href="../css/commonStyle.css" th:href="@{/css/commonStyle.css}" />
+<link rel="stylesheet" type="text/css" media="all" href="../css/detailsStyle.css" th:href="@{/css/detailsStyle.css}" />
+</head>
+<body>
+
+<h1>Pagina di dettaglio del documento</h1>
+
+	<div class="container">
+		<div class="buttons">
+			<div>
+				<!--LINK TO LOG OUT OF THE SYSTEM-->
+				<a th:href="@{/Logout}">Logout</a>
+			</div>
+			<div>
+				<!--LINK TO GO BACK TO THE HOME PAGE-->
+				<a th:href="@{/HomePage}">Torna alla Home Page</a>
+			</div>
+			<div th:if="${previousId} != null">
+				<!--LINK TO GO BACK TO THE PREVIOUS DIRECTORY-->
+				<a th:href="@{/GetContent(directoryId=${previousId})}">Vai alla cartella padre</a>
+			</div>
+		</div>
+		<div>
+			<table>
+				<tr>
+					<td class="header">Nome:</td>
+					<td class="dynamicData"><span th:text="${document.name}"> </span></td>
+				</tr>
+
+				<tr>
+					<td class="header">Data Creazione:</td>
+					<td class="dynamicData"><span th:text="${document.creationDate}"></span></td>
+				</tr>
+
+				<tr>
+					<td class="header">Sommario:</td>
+					<td class="dynamicData"><span th:text="${document.summary}"></span></td>
+				</tr>
+
+				<tr>
+					<td class="header">Tipo:</td>
+					<td class="dynamicData"><span th:text="${document.type}"></span></td>
+				</tr>
+
+				<tr>
+					<td class="header">Creatore:</td>
+					<td class="dynamicData"><span th:text="${document.creator}"></span></td>
+				</tr>
+
+				<tr>
+					<td class="header">Cartella padre:</td>
+					<td class="dynamicData"><span th:text="${fatherId}"></span></td>
+				</tr>
+			</table>
+		</div>
+
+		<br>
+		
+		<div class="boxed">
+			<!--LINK TO THE CONTENT MANAGEMENT PAGE-->
+			<a th:href="@{/GetContentManagement}">Accedi alla pagina dove potrai inserire cartelle e documenti</a>
+		</div>
+	</div>
+</body>
+</html>

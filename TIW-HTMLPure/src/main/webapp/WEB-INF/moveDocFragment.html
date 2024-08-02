@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all"
+	href="../css/directoriesStyle.css" th:href="@{/css/directoriesStyle.css}" />
+
+<body>
+ 	<!--/*  declare the fragment called "moveList" and pass the parameters directory & document */-->
+	<div th:fragment="moveList(directory, document)" style="display: inline">
+
+		<span th:if="${directory.isTop == true}" >
+
+			<a th:if="${directory.id != previousId}" th:href="@{/MoveDocToDir(directoryId=${directory.id}, documentId=${document.id})}" th:text="${directory.name}">Lorem ipsum</a>
+			<span th:if="${directory.id == previousId}" th:text="${directory.name}" class="fromDir"></span>
+		</span>
+
+		<ul th:unless="${#lists.isEmpty(directory.subdirectories)}" >
+
+			<li th:each="child : ${directory.subdirectories}">
+				
+				<a th:if="${child.id != previousId}" th:href="@{/MoveDocToDir(directoryId=${child.getId()}, documentId=${document.id})}" th:text="${child.name}">Lorem ipsum</a> 
+				<span th:if="${child.id == previousId}" th:text="${child.name}" class="fromDir"></span>
+				<!--/* "this" indicates that the fragment to be used is in this file */-->
+				<!--/* the product parameter to use in the fragment is the current child */-->
+				<ul th:replace="this::moveList (${child}, ${document})"></ul>
+			
+			</li>
+
+		</ul>
+
+	</div>
+
+</body>
+
+</html>

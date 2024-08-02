@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login page</title>
+
+<link rel="stylesheet" type="text/css" media="all" href="/TIW-RIA/css/loginStyle.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="/TIW-RIA/css/commonStyle.css"/>
+
+<script src="javascript/utils.js" charset="utf-8" defer></script>
+<script src="javascript/login.js" charset="utf-8" defer></script>
+<script src="javascript/register.js" charset="utf-8" defer></script>
+</head>
+<body>
+
+	<h1>Benvenuto nell'applicazione per gestire i tuoi documenti</h1>
+
+	<div class="wrapper">
+		<table class="formContainer">
+			<tr>
+				<td>
+					<form action="CheckLogin" method="POST" class="logForm">
+						<fieldset>
+							Username <br> <input type="text" name="username" required> <br><br>
+							Password <br> <input type="password" name="password" required> <br><br>
+							<input id="loginbutton" type="button" value="login" class="button">
+							<p id="errorMessageLogin"></p>
+						</fieldset>
+					</form>
+
+				</td>
+				<td>
+					<form action="Registration" method="POST" class="regForm">
+						<fieldset>
+							Username <br> <input type="text" name="username" required> <br><br>
+							E-mail <br> <input type="email" name="email" required> <br><br>
+							Password <br> <input type="password" name="password" required><br><br>
+							Ripeti Password <br> <input type="password" name="repeatedPassword" required> <br><br>
+							<input id="registerbutton" type="button" value="Registrati" class="button">
+							<p id="errorMessageRegistration"></p>
+						</fieldset>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

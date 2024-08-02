@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Content Management</title>
+<link rel="stylesheet" type="text/css" media="all" href="../css/formstyle.css" th:href="@{/css/formstyle.css}"/>
+<link rel="stylesheet" type="text/css" media="all" href="../css/commonStyle.css" th:href="@{/css/commonStyle.css}"/>
+</head>
+
+<body>
+	<h1>Content Management page</h1>
+	
+	<div class="container">
+		<h3>Crea cartelle, sottocartelle o documenti utilizzando i seguenti form</h3>
+
+		<div class="buttons">
+			<div align="right">
+				<!--LINK TO LOG OUT OF THE SYSTEM-->
+				<a th:href="@{/Logout}">Logout</a>
+			</div>
+
+			<div align="right">
+				<!-- LINK TO GO BACK TO HOMEPAGE -->
+				<a th:href="@{/HomePage}">Torna alla Home Page</a>
+			</div>
+		</div>
+		
+	<div class="pageContent">
+	<p>Fai attenzione: il nome della cartella o del documento non pu&oacute; essere uguale a quello di una cartella/documento gi&#225; presente nella cartella padre selezionata.</p>
+	<p>Se l'aggiunta avr&#225; successo, sarai reindirizzato alla Home Page o alla pagina dei contenuti della cartella dove hai aggiunto il documento.</p>
+	
+	<!-- FORM TO CREATE A DIRECTORY --> 
+	<div class="formdiv"> <!--  -->
+		<form action="#" th:action="@{/CreateDirectory}" method="POST">
+			<fieldset>
+				<legend class="legend">Completa il form per creare una cartella</legend>
+				<p>
+					Nome:
+				<span class="input"><input type="text" name="name" required /></span>
+				</p>
+
+				<div class="create">
+					<input type="submit" value="Crea Cartella">
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	
+	<!-- FORM TO CREATE A SUBDIRECTORY --> 
+	<div class="formdiv" th:if="${directories != null && directories.size() > 0}"> <!-- class="formdiv" -->
+		<form action="#" th:action="@{/CreateSubdirectory}" method="POST">
+			<fieldset>
+				<legend class="legend">Completa il form per creare una sottocartella</legend>
+				<p>
+					Nome: 	
+				<span class="input"><input type="text" name="name" required /></span>
+				</p>
+
+				<p>
+				<label>Scegli la cartella padre: </label>
+				<span class="input"><select name="fatherId" id="fatherId" required>
+					<option th:each="d : ${directories}" th:value="${d.id}"	th:text="${d.name}"></option>
+				</select></span>			
+				</p>
+
+				<div class="create">
+					<input type="submit" value="Crea Sottocartella">
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	
+	<!-- FORM TO CREATE A DOCUMENT --> 
+	<div class="formdiv" th:if="${directories != null && directories.size() > 0}"> <!-- class="formdiv" -->
+		<form action="#" th:action="@{/CreateDocument}" method="POST">
+			<fieldset>
+				<legend class="legend">Completa il form per creare un documento</legend>
+				<p>
+					Nome: 
+					<span class="input"><input type="text" name="name" required/></span>
+				</p>
+
+				<p>
+					Sommario: 
+					<span class="input"><input type="text" name="summary" required/></span>
+				</p>
+				
+				<p>
+				<label>Scegli la cartella padre: </label> 
+				<span class="input"><select name="fatherId" id="fatherId" required>
+					<option th:each="d : ${directories}" th:value="${d.id}" th:text="${d.name}"></option>
+				</select></span>
+				</p>
+
+				<p>
+					Tipo: 
+					<span class="input"><input type="text" name="type" required/></span>
+				</p>
+				
+				<div class="create">
+					<input type="submit" value="Crea Documento">
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	</div>
+	</div>
+</body>
+</html>

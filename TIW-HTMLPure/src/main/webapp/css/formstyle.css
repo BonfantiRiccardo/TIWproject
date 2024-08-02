@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+h3 {
+	margin: 0px !important;
+	display: inline;
+}
+
+.buttons {
+	float: right;
+}
+
+.buttons div {
+	display: block !important;
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 2px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.pageContent {
+	margin: auto;
+}
+
+.formdiv {
+	display: inline-block;
+	width: 33%;
+	text-align: center;
+	vertical-align: top;
+	padding-top: 5px;
+}
+
+.formdiv form fieldset {
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.formdiv form fieldset p {
+	margin: 3px !important;
+	text-align: right;
+}
+
+.legend {
+	border: 1px solid;
+	border-radius: 5px;
+}
+
+.input {
+	padding-right: 3px;
+}
+
+.input input {
+	width: 200px;
+}
+
+.create {
+	padding-top: 5px;
+	text-align: center;
+}
+
+.create input {
+	border-radius: 5px;
+}

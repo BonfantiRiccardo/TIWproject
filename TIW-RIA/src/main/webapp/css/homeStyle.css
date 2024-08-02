@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+tr {
+	padding: 10px;
+}
+
+p {
+	margin: 3px;
+}
+
+.logout {
+	display: inline;
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 2px;
+	float: right;
+}
+
+.pageContent {
+	display: inline;
+}
+
+.cell {
+	width: 600px;
+	vertical-align: top;
+}
+
+ul {
+  list-style: none;
+}
+
+.utils {
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+
+.utils li {
+	margin-top: 5px;
+}
+
+.bin::before {
+	content: "🗑️ ";
+}
+
+.folder::before {
+	content: "📁 ";
+}
+
+.doc::before {
+	content: "📄 ";
+}
+
+.alertmessage{
+	color: red;
+}
+
+.movingTo {
+	background-color: green;
+}
+
+.deleting {
+	background-color: red;
+}
+
+.button {
+	border-radius: 3px;
+	text-align: center;
+}
+
+.button input {
+	border-radius: 3px;
+}
+
+.boxed {
+	margin-top: 50px;
+	border: 1px solid;
+	border-radius: 10px;
+	border-collapse: separate !important;
+	border-spacing: 5px 5px;
+}
+
+.boxed td {
+	border-bottom: 1px solid;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+.header {
+	text-align: right;
+	padding-right: 15px;
+}
+
+.dynamicData {
+	text-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: #474e5d;
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: Azure;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 2px solid;
+  border-radius: 10px;
+  width: 40%; /* Could be more or less, depending on screen size */
+  text-align: center;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+.warningMessage {
+	font-family: Georgia, serif;
+	line-height: 1.6;
+}
+
+.confirmButton {
+  	background-color: #f44336;
+  	color: white;
+  	padding: 14px 20px;
+  	margin: 8px 0;
+  	margin-right: 2px;
+ 	border: none;
+ 	border-radius: 5px;
+  	cursor: pointer;
+	display: inline;
+  	width: 47%;
+}
+
+.cancelButton {
+	background-color: #ccc;
+	color: black;
+	padding: 14px 20px;
+  	margin: 8px 0;
+  	margin-left: 2px;
+ 	border: none;
+ 	border-radius: 5px;
+  	cursor: pointer;
+	display: inline; /*float: left;*/
+  	width: 47%;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}

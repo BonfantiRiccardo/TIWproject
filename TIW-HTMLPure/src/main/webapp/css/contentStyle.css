@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+h3 {
+	margin: 0px !important;
+}
+
+.buttons {
+	float: right;
+}
+
+.buttons div {
+	display: block !important;
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 2px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.pageContent {
+	display: inline;
+}
+
+ul{
+  list-style: none;
+}
+
+.folder::before {
+	content: "📁 ";
+}
+
+.doc::before {
+	content: "📄 ";
+}

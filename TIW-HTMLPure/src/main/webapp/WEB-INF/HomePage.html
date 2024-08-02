@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<link rel="stylesheet" type="text/css" media="all" href="../css/commonStyle.css" th:href="@{/css/commonStyle.css}" />
+<link rel="stylesheet" type="text/css" media="all" href="../css/directoriesStyle.css" th:href="@{/css/directoriesStyle.css}" />
+<link rel="stylesheet" type="text/css" media="all" href="../css/home.css" th:href="@{/css/home.css}" />
+</head>
+
+<body>
+	<h1>Home page</h1>
+
+	<div class="container">
+		<span class="logout"> <!-- style="display: inline" class="logout" -->
+			<!--LINK TO LOG OUT OF THE SYSTEM-->
+			<a th:href="@{/Logout}">Logout</a>
+		</span>
+
+		<div th:if="${movingFlag == false}" class="pageContent">
+			<!--WELCOME MESSAGE, USE SESSION PARAMETER TO GET THE NAME-->
+			<span th:text="${'Bentornato/a ' + session.user.username + ', da qui potrai visualizzare le tue cartelle:'}"></span>
+
+			<ul>
+				<!-- FOR EACH TOP DIRECTORY INSERT THE RESULT OF THE CALL OF THE FRAGMENT WITH THAT PARAMETER -->
+				<li th:each="directory : ${directories}"
+					th:if="${directory.isTop == true}"
+					th:insert="@{WEB-INF/dirFragment.html} :: list (directory)"></li>
+			</ul>
+
+			<div th:if="${directories == null || directories.size() == 0}" class="warning">
+				Non sono ancora state create cartelle.<br><br><br>
+			</div>
+
+			<div class="boxed"> <!-- align="center" -->
+				<!--LINK TO THE CONTENT MANAGEMENT PAGE-->
+				<a th:href="@{/GetContentManagement}">Accedi alla pagina dove potrai inserire cartelle e documenti</a>
+			</div>
+		</div>
+
+		<div th:if="${movingFlag == true}" class="pageContent">
+			<!-- BACK BUTTON, FRAGMENT TO CREATE DIRECTORY TREE WITH CORRECT LINK, TOGGLE THE LINK TO THE CURRENT DIRECTORY
+				 AND SET STYLE TO COLOR IT DIFFERENTLY -->
+			<!--MESSAGE TO NOTIFY THE USER OF THE DOCUMENT WE ARE MOVING AND FROM WHICH DIRECTORY-->
+			<p th:text="${'Stai spostando il documento: &quot;' + document.name + '&quot; 
+							dalla cartella: &quot;' + fatherId + '&quot;. Scegli la cartella di destinazione:'}"></p>
+
+			<ul>
+				<!-- FOR EACH TOP DIRECTORY INSERT THE RESULT OF THE CALL OF THE FRAGMENT WITH THAT PARAMETER -->
+				<li th:each="directory : ${directories}"
+					th:if="${directory.isTop == true}"
+					th:insert="@{WEB-INF/moveDocFragment.html} :: moveList (directory, ${document})"></li>
+			</ul>
+
+
+			<div th:if="${directories == null || directories.size() == 0}" class="warning">Non sono ancora state create cartelle.</div>
+
+			<div align="center" class="boxed"> 
+				<!--LINK TO THE CONTENT MANAGEMENT PAGE-->
+				<a th:href="@{/GetContent(directoryId=${previousId})}">
+				Torna alla pagina della cartella padre e annulla lo spostamento.</a>
+				<br>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

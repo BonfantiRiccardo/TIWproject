@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.wrapper {
+	display: flex;
+	height: 500px;
+}
+
+.formContainer {
+	margin-left: auto;
+  	margin-right: auto;
+  	border-spacing: 10px;
+  	align-self: center;
+}
+
+td {
+	border: 1px solid;
+	width: 300px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.logForm fieldset {
+	border: 0px;
+}
+
+.regForm fieldset {
+	border: 0px;
+}
+
+input {
+	background: white;
+	border-radius: 40px;
+	padding-left: 5px;
+}
+
+.button {
+	width: 80%;
+	background: lavender;
+	border: 2px solid rgba(173, 255, 47);
+	outline: none;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: 600;
+}

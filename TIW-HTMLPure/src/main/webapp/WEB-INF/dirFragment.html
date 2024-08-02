@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+ 	<!--/*  declare the fragment called "list" and pass the parameter directory */-->
+	<div th:fragment="list(directory)" style="display: inline">
+
+		<span th:if="${directory.isTop == true}" >
+
+			<a th:href="@{/GetContent(directoryId=${directory.id})}" th:text="${directory.name}">Lorem ipsum</a>
+
+		</span>
+
+		<ul th:unless="${#lists.isEmpty(directory.subdirectories)}" >
+
+			<li th:each="child : ${directory.subdirectories}">
+				
+				<a th:href="@{/GetContent(directoryId=${child.getId()})}" th:text="${child.name}">Lorem ipsum</a> 
+
+				<!--/* "this" indicates that the fragment to be used is in this file */-->
+				<!--/* the product parameter to use in the fragment is the current child */-->
+				<ul th:replace="this::list (${child})"></ul>
+			
+			</li>
+
+		</ul>
+
+	</div>
+
+</body>
+
+</html>

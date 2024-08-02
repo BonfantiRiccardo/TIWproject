@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login page</title>
+<link rel="stylesheet" type="text/css" media="all" href="../css/loginStyle.css" th:href="@{/css/loginStyle.css}" />
+<link rel="stylesheet" type="text/css" media="all" href="../css/commonStyle.css" th:href="@{/css/commonStyle.css}"/>
+<link rel="stylesheet" type="text/css" media="all" href="/TIW-HTMLPure/css/loginStyle.css" th:href="@{/TIW-HTMLPure/css/loginStyle.css}" />
+<link rel="stylesheet" type="text/css" media="all" href="/TIW-HTMLPure/css/commonStyle.css" th:href="@{/TIW-HTMLPure/css/commonStyle.css}"/>
+</head>
+<body>
+
+	<h1>Benvenuto nell'applicazione per gestire i tuoi documenti</h1>
+
+	<div class="wrapper">
+		<table class="formContainer">
+			<tr>
+				<td>
+					<form action="CheckLogin" method="POST" class="logForm">
+						Username <br> <input type="text" name="username" required><br><br>
+						Password <br> <input type="password" name="password" required><br><br>
+						<input type="submit" value="Login" class="button">
+						<p th:text=" ${errorMsg}"></p>
+					</form>
+				</td>
+				<td>
+					<form action="Registration" method="POST" class="regForm">
+						Username <br> <input type="text" name="username" required><br><br>
+						E-mail <br> <input type="email" name="email" required><br><br>
+						Password <br> <input type="password" name="password" required><br><br>
+						Ripeti Password <br> <input type="password" name="repeatedPassword" required><br><br>
+						<input type="submit" value="Registrati" class="button">
+						<p th:text=" ${errorMsg2}"></p>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Directory Content Page</title>
+<link rel="stylesheet" type="text/css" media="all" href="../css/commonStyle.css" th:href="@{/css/commonStyle.css}"/>
+<link rel="stylesheet" type="text/css" media="all" href="../css/contentStyle.css" th:href="@{/css/contentStyle.css}"/>
+</head>
+<body>
+
+<h1>Pagina dei contenuti di una cartella</h1>
+	<!--VISUALIZATION MESSAGE, USE PARAMETER TO SHOW THE CURRENT DIRECTORY NAME-->
+	<div class="container">
+	<h3 th:text="${'Stai visualizzando il contenuto della cartella: ' + directoryName}">Stai visualizzando...</h3>
+	
+	<div class="buttons">	
+	<div>
+		<!--LINK TO LOG OUT OF THE SYSTEM-->
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+	<div>
+		<!--LINK TO GO BACK TO THE HOME PAGE-->
+		<a th:href="@{/HomePage}">Torna alla Home Page</a>
+	</div>
+	<div th:if="${previousId} != null">
+		<!--LINK TO GO BACK TO THE PREVIOUS DIRECTORY-->
+		<a th:href="@{/GetContent(directoryId=${previousId})}">Vai alla cartella padre</a>
+	</div>
+	</div>
+	
+	<div class="pageContent">
+		<p>Cartelle contenute: </p>
+		<ul>
+			<!-- FOR EACH SUBDIRECTORY: APPEND TO THE LIST AND CREATE A LINK TO ITS CONTENT -->
+			<li class="folder" th:each="d : ${directories}">
+				<a th:href="@{/GetContent(directoryId=${d.id})}" th:text="${d.name}">Lorem ipsum</a>
+			</li>
+		</ul>
+	</div>
+	
+	<div th:if="${directories == null || directories.size() == 0}">Non sono presenti cartelle.</div>
+	
+	<br>
+	
+	<div>
+		<p>Documenti contenuti: </p>
+		<ul>
+			<!-- FOR EACH DOCUMENT: APPEND TO THE LIST AND CREATE 2 LINKS, ONE FOR ACCESS AND ONE FOR MOVING -->
+			<li class="doc" th:each="doc : ${documents}">
+				<span th:text="${doc.name}"></span>  &nbsp;   >><a 
+				th:href="@{/GetDocumentDetails(documentId=${doc.id})}">Accedi</a>  &nbsp;   >><a 
+				th:href="@{/MoveDocument(documentId=${doc.id})}">Sposta</a>
+			</li>
+		</ul>
+	</div>
+	
+	<div th:if="${documents == null || documents.size() == 0}">Non sono presenti documenti.</div>
+	
+	<br>
+
+	<div class="boxed">
+		<!--LINK TO THE CONTENT MANAGEMENT PAGE-->
+		<a th:href="@{/GetContentManagement}">Accedi alla pagina dove potrai inserire cartelle e documenti</a>
+	</div>
+</div>
+</body>
+</html>

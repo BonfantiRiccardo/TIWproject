@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/commonStyle.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/homeStyle.css"/>
+
+<script src="javascript/utils.js" charset="utf-8" defer></script>
+<script src="javascript/homePageHandler.js" charset="utf-8" defer></script>
+</head>
+<body>
+	<div id="modal" class="modal">
+		<div class="modal-content">
+		<div>
+			<div class="warningMessage" id="warningMessage">Sei sicuro di voler eliminare l'elemento? L'azione è irreversibile</div>
+			<div>
+				<input class="confirmButton" id="confirm" type="button" value="Conferma"> 
+				<input class="cancelButton" id="cancel" type="button" value="Annulla">
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<h1>Home Page</h1>
+
+	<div class="container">
+		<div align="right" class="logout">
+			<a href="Logout">Logout</a>
+		</div>
+
+	<div class="pageContent">
+		<p>
+		Bentornato/a <span id="id_username"></span>, da qui potrai gestire i
+		tuoi documenti e le tue cartelle.
+		</p>
+
+	<table>
+		<tr>
+			<td class="cell">
+				<ul class="">
+					<li id="bin" class="bin">Cestino</li>
+					<li><input class="button" id="addDir" type="button" value="Aggiungi cartella"></li>
+				</ul>
+				 
+				<ul id="topDir">
+
+				</ul>
+			</td>
+				<td class="cell">
+					<table>
+						<tr>
+							<td>
+								<p id="infoText"></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<form id="create_directory">
+									Nome: <input style="width: 250px;" type="text" name="name" required> 
+									<input class="button" id="createDir" type="button" value="Crea">
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<form id="create_subdirectory">
+									<input type="hidden" name="fatherId" required> 
+									Nome: <input type="text" name="name" required> 
+									<input class="button" id="createSubDir" type="button" value="Crea">
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<form id="create_document">
+									<input type="hidden" name="fatherDirId" required> 
+									Nome: <input style="width: 300px;" type="text" name="name" required><br>
+									Sommario: <input style="width: 350px;" type="text" name="summary" required><br> 
+									Tipo: <input style="width: 300px;" type="text" name="type" required><br>
+									<input class="button" id="createDoc" type="button" value="Crea">
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td><br><div class="button"><input class="button" id="hideForms" type="button" value="Chiudi"></div></td>
+						</tr>
+						<tr>
+							<td>
+								<table id="document_content" class="boxed">
+										<tr><td colspan="2" align="center">Dettagli del documento selezionato</td></tr>
+										<tr>
+											<td class="header">Nome</td>
+											<td id="id_docName" class="dynamicData"></td>
+										</tr>
+										<tr>
+											<td class="header">Data Creazione</td>
+											<td id="id_docCreationDate" class="dynamicData"></td>
+										</tr>
+										<tr>
+											<td class="header">Sommario</td>
+											<td id="id_docSummary" class="dynamicData"></td>											
+										</tr>
+										<tr>											
+											<td class="header">Tipo</td>
+											<td id="id_docType" class="dynamicData"></td>
+										</tr>
+										<tr>											
+											<td class="header">Creatore</td>
+											<td id="id_docCreator" class="dynamicData"></td>
+										</tr>
+										<tr>
+											<td class="header">Cartella Padre</td>
+											<td id="id_docFatherDirectory" class="dynamicData"></td>
+										</tr>
+								</table> <br> 
+								<div class="button"><input id="hideDetails" type="button" value="Chiudi"></div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+	</table>
+	<div id="id_alert" class="alertmessage"></div>
+	</div>
+	</div>
+</body>
+</html>
